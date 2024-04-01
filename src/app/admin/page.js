@@ -6,11 +6,13 @@ import { Navbar } from "@/components/Navbar";
 import { AdminView } from "@/components/Admin"; // Make sure this path is correct
 import { useAccount } from "wagmi";
 import { adminAddresses } from "@/config/data";
+import { GlobalContext } from '@/context/context';
 import Image from "next/image";
 
 export default function AdminPage() {
+    const { isAdmin, setIsAdmin} = GlobalContext()
     const { address } = useAccount(); 
-    const [isAdmin, setIsAdmin] = useState(false);
+   
 
 
     useEffect(() => {

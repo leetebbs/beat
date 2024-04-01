@@ -204,9 +204,9 @@ body {
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(146, 194, 194)
+      rgb(204, 238, 238)
     )
-    rgb(146, 194, 194);
+    rgb(203, 236, 236);
 }
 
 @layer utilities {

@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { artistNftAddress, artistNftAbi } from "@/config/data.js";
 import { useAccount, useReadContract } from "wagmi";
-
+import { GlobalContext } from "@/context/context";
 export function useCheckArtist() {
     const {address, isConnected , chainId} = useAccount()
     //const { address, chainId, isConnected } = useWeb3ModalAccount();
-    const [isArtist, setIsArtist] = useState(false);
+    const {isArtist, setIsArtist} = GlobalContext();
 
     useEffect(() => {
         if (isConnected) {

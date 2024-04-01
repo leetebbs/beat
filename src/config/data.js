@@ -1378,4 +1378,4 @@ export const DBeatsFactoryAbi = [
       "type": "function"
     }
   ]
-export const adminAddresses = ["0x1ABc133C222a185fEde2664388F08ca12C208F76","0xdb035c42e12ee11f1D47797954C25EE36C3dC77c","0x1c629d919eaf6c9671cfa388a616f645aba06586"];
+export const adminAddresses = ["0x1ABc133C222a185fEde2664388F08ca12C208F76","0xdb035c42e12ee11f1D47797954C25EE36C3dC77c","0x1C629d919EAF6C9671cFA388a616F645Aba06586"];

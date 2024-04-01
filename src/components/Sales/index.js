@@ -27,12 +27,11 @@ export const SalesView = () => {
           </div>
           {/** Cards Response Implemenrtation  */}
           <div className="mt-10 w-full mb-[190px] flex flex-wrap h-auto">
-            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-black"></div>
-            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-black"></div>
-            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-black"></div>
-            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-black"></div>
-            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-black"></div>
-           
+            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-white/55">
+              <div>
+                
+              </div>
+            </div>   
           </div>
         </div>
       </div>

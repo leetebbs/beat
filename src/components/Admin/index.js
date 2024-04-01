@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
+import { IoMdAt ,IoIosSearch } from "react-icons/io";
 import {
   DBeatsFactoryAddress,
   DBeatsFactoryAbi,
@@ -55,25 +56,28 @@ export const AdminView = () => {
   }
 
   return (
-<div className="my-[150px] flex flex-col items-center justify-center">
-  <h1 className="text-3xl text-black text-center">Admin</h1>
+<div className="mt-32 w-full flex flex-col items-center justify-center">
+ 
   <div className="admin_container flex flex-col items-center">
-    <h2 className="text-center my-10">Verify Artist Address</h2>
-    <form className="flex flex-col items-center">
-      <label>
-        <input
-          className="text-black w-[375px] text-center"
-          type="text"
-          placeholder="Enter verified address"
-          onChange={(e) => setVerifyAddress(e.target.value)}
-        />
-      </label>
-    </form>
+    <div className="text-center py-3 px-3 flex my-10">
+      <img src="./assets/blue.png" className="w-8 h-8"/>
+      <p className="py-1 px-2 font-bold">Verify Artist Address</p>
+    </div>
+    <div className=" ml-auto mr-auto w-[610px] mt-[40px] h-24">
+            <div className="h-[50%] mt-auto mb-auto rounded-full bg-white text-xl flex flex-row w-[95%] ml-auto mr-auto">
+              <input
+                className=" h-[100%] w-[100%] outline-none bg-transparent py-3 px-3"
+                type="text"
+                placeholder="Enter Artist Address"
+                onChange={(e) => setVerifyAddress(e.target.value)}
+              />
+            </div>
+          </div>
     <div className="flex items-center gap-4 my-10">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded " onClick={setVerified}>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white w-32 font-bold py-2 px-4 rounded-full " onClick={setVerified}>
         Verify
       </button>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={mintArtistNFT}>
+      <button className="bg-blue-500 hover:bg-blue-700 w-32 text-white font-bold py-2 px-4 rounded-full" onClick={mintArtistNFT}>
         Mint
       </button>
     </div>
