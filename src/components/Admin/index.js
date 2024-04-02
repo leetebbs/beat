@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
+import { useWriteContract } from 'wagmi' 
 import { IoMdAt ,IoIosSearch } from "react-icons/io";
 import {
   DBeatsFactoryAddress,
@@ -10,6 +11,7 @@ import {
 } from "@/config/data";
 import { useAccount } from "wagmi";
 export const AdminView = () => {
+  const {data:hash , writeContract } = useWriteContract()
   const [verifyAddress, setVerifyAddress] = useState("");
   const [error, setError] = useState(""); // State to handle error messages
   const role =
@@ -34,6 +36,22 @@ export const AdminView = () => {
       }
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  const setVerify = async () => {
+    try {
+      console.log('starting')
+      writeContract({
+        address: DBeatsFactoryAddress, 
+        DBeatsFactoryAbi, 
+        functionName: 'grantRole', 
+        args: [role,verifyAddress]
+      })
+      console.log('middle')
+    } catch (error) {
+      console.log(error);
+      alert('err',error)
     }
   }
 
