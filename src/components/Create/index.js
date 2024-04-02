@@ -133,66 +133,96 @@ export const CreateView = () => {
   }
 
   return (
-    <div className="w-[60%] text-black mt-24 flex flex-col justify-center items-center">
+    <div className="w-[100%] text-black mt-24 flex flex-col justify-center items-center">
       <h1>Create</h1>
-      <div className="w-[85%] ml-auto mr-auto py-12 h-auto bg-blue-200 p-10 flex justify-evenly rounded">
-        <div className="w-[40%] items-center bg-white p-3">
-          <form onSubmit={handleSubmit} className=" items-center">
-            <input
-              className="w-[90%] h-10 rounded-lg mt-3"
-              type="text"
-              placeholder="Enter Artist Name"
-              required
-              onChange={(e) => setArtistName(e.target.value)}
-            />
-            <input
-              className="w-[90%] h-10 rounded-lg mt-3"
-              type="text"
-              placeholder="Enter Track Name"
-              required
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              className="w-[90%] h-10 rounded-lg mt-3"
-              type="text"
-              placeholder="Enter Description"
-              required
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <input
-              className="w-[90%] h-10 rounded-lg mt-3"
-              type="text"
-              placeholder="Enter Sale Price"
-              required
-              onChange={(e) => setPrice(e.target.value)}
-            />
-            <input
-              className="w-[90%] h-10 rounded-lg mt-3"
-              type="number"
-              placeholder="Number of copies"
-              required
-              //   min="1" // Ensure the input starts at 1
-              onChange={(e) => {
-                const value = parseInt(e.target.value, 10);
-                if (value > 1) {
-                  setNumberOfCopies(value);
-                } else {
-                  // Option 1: Reset the input to 1
-                  e.target.value = 1;
-                  setNumberOfCopies(1);
-                }
-              }}
-            />
-            <input
-              className="w-[90%] h-10 rounded-lg mt-3"
-              type="text"
-              placeholder="NFT Symbol"
-              required
-              onChange={(e) => setNftSymbol(e.target.value)}
-            />
-
-            <select
-              className="w-[90%] h-10 rounded-lg mt-3"
+      <div className="w-[95%] ml-auto mr-auto py-8 px-8 h-auto flex justify-evenly rounded">
+        <div className="w-[50%] py-8 px-5 items-center rounded-3xl bg-white/25 ">
+          <div className=" items-center">
+            <div className="flex">
+            <div className=" ml-auto mr-auto w-[300px] mt-[4px] h-20">
+            <div className="h-[50%] mt-auto mb-auto rounded-full bg-white/35 text-sm flex flex-row w-[95%] ml-auto mr-auto">
+              <input
+                className=" h-[100%] w-[100%] outline-none bg-transparent py-3 px-3"
+                type="text"
+                required
+                placeholder="Enter Artist Name"
+                onChange={(e) => setArtistName(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className=" ml-auto mr-auto w-[300px] mt-[4px] h-20">
+            <div className="h-[50%] mt-auto mb-auto rounded-full bg-white/35 text-sm flex flex-row w-[95%] ml-auto mr-auto">
+              <input
+                className=" h-[100%] w-[100%] outline-none bg-transparent py-3 px-3"
+                type="text"
+                required
+                placeholder="Enter Track Name"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+          </div>
+          </div>
+          <div className="flex">
+            <div className=" ml-auto mr-auto w-[300px] mt-[4px] h-20">
+            <div className="h-[50%] mt-auto mb-auto rounded-full bg-white/35 text-sm flex flex-row w-[95%] ml-auto mr-auto">
+              <input
+                className=" h-[100%] w-[100%] outline-none bg-transparent py-3 px-3"
+                type="text"
+                required
+                placeholder="Enter Description"
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className=" ml-auto mr-auto w-[300px] mt-[4px] h-20">
+            <div className="h-[50%] mt-auto mb-auto rounded-full bg-white/35 text-sm flex flex-row w-[95%] ml-auto mr-auto">
+              <input
+                className=" h-[100%] w-[100%] outline-none bg-transparent py-3 px-3"
+                type="text"
+                required
+                placeholder="Enter Sale Price"
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </div>
+          </div>
+          </div>
+          <div className="flex">
+            <div className=" ml-auto mr-auto w-[300px] mt-[4px] h-20">
+            <div className="h-[50%] mt-auto mb-auto rounded-full bg-white/35 text-sm flex flex-row w-[95%] ml-auto mr-auto">
+              <input
+                className=" h-[100%] w-[100%] outline-none bg-transparent py-3 px-3"
+                type="number"
+                required
+                placeholder="Enter Number of Copies"
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  if (value > 1) {
+                    setNumberOfCopies(value);
+                  } else {
+                    // Option 1: Reset the input to 1
+                    e.target.value = 1;
+                    setNumberOfCopies(1);
+                  }
+                }}
+              />
+            </div>
+          </div>
+          <div className=" ml-auto mr-auto w-[300px] mt-[4px] h-20">
+            <div className="h-[50%] mt-auto mb-auto rounded-full bg-white/35 text-sm flex flex-row w-[95%] ml-auto mr-auto">
+              <input
+                className=" h-[100%] w-[100%] outline-none bg-transparent py-3 px-3"
+                type="text"
+                required
+                placeholder="Enter NFT Symbol"
+                onChange={(e) => setNftSymbol(e.target.value)}
+              />
+            </div>
+          </div>
+          </div>
+          <div className=" ml-auto mr-auto w-[660px] mt-[4px] h-20">
+            <div className="h-[50%] mt-auto mb-auto py-0 px-2 rounded-full bg-white/35 text-sm flex flex-row w-[95%] ml-auto mr-auto">
+              <select
+              className="h-[100%] w-[100%] outline-none bg-transparent py-3 px-3"
               value={selectedGenre}
               required
               onChange={(e) => setSelectedGenre(e.target.value)}
@@ -202,10 +232,13 @@ export const CreateView = () => {
               <option value="Classical">Classical</option>
               <option value="Pop">Pop</option>
             </select>
-            <div className="bg-blue-500 p-2 w-[265px] rounded mt-3 text-white">
-              <h1>Upload Cover image</h1>
+            </div>
+          </div>
+      
+            <div className="bg-black/35 w-[630px] py-1 ml-auto mr-auto flex rounded-3xl mt-1 text-white">
+              <h1 className=" py-4 ml-auto mr-auto">Upload Cover</h1>
               <input
-                className="w-[90%] h-10 rounded-lg mt-3 font"
+                className="w-[50%] h-10 ml-auto mr-auto items-end rounded mt-3 font"
                 type="file"
                 placeholder="Upload Cover image"
                 accept=".jpg,.jpeg,.png,.gif"
@@ -213,11 +246,11 @@ export const CreateView = () => {
                 onChange={handleImageChange}
               />
             </div>
-            <div className="bg-blue-500 p-2 w-[265px] rounded mt-3 text-white">
-              <h1>Upload Track</h1>
-              <p className="text-xs">files accepted: .mp3 .wav .ogg</p>
+            <div className="bg-black/35 w-[630px] py-1 ml-auto mr-auto rounded-3xl mt-3 text-white">
+              <div className="flex">
+              <h1 className=" py-4 ml-auto mr-auto">Upload Track</h1>
               <input
-                className="w-[90%] h-10 rounded-lg mt-3"
+                className="w-[50%] h-10 ml-auto mr-auto items-end rounded mt-3 font"
                 type="file"
                 placeholder="Upload files"
                 // multiple
@@ -225,14 +258,20 @@ export const CreateView = () => {
                 accept=".mp3,.wav,.ogg"
                 onChange={handleFileChange}
               />
+              </div>
+              <div className="w-[70%] ml-auto mr-auto text-center rounded-3xl h-7 bg-red-500/55">
+                <p className="py-0.5">We only accept .mp3 .wav .ogg files Innit  </p>
+              </div>
             </div>
+            <div className="w-full mt-6 flex">
             <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-3"
+              onClick={(e) => handleSubmit()}
+              className="bg-blue-500 ml-auto mr-auto hover:bg-blue-700 w-42 text-white font-bold py-2 px-4 rounded-2xl mt-3"
             >
-              Create
+              Create Now
             </button>
-          </form>
+            </div>
+          </div>
         </div>
         <div>
           {imageInput ? (
