@@ -41,7 +41,7 @@ export const CreateView = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     e.preventDefault();
     handleUploadImageToIpfs();
     handleUploadMusicToIpfs();
@@ -267,7 +267,7 @@ export const CreateView = () => {
             </div>
             <div className="w-full mt-6 flex">
             <button
-              onClick={(e) => handleSubmit()}
+              onClick={() => handleSubmit()}
               className="bg-blue-500 ml-auto mr-auto hover:bg-blue-700 w-42 text-white font-bold py-2 px-4 rounded-2xl mt-3"
             >
               Create Now
