@@ -1,6 +1,47 @@
+'use client'
 import { FaSearchengin, FaSear } from "react-icons/fa6";
 import { IoIosSearch } from "react-icons/io";
+import { Each } from "./components/Each";
+import { useState } from "react";
 export const SalesView = () => {
+  const [searchVal, setSearchVal] = useState('')
+  const students = [
+    {
+      class:'js1',
+      name:'imran',
+      position:'striker'
+    },
+    {
+      class:'js2',
+      name:'haroun',
+      position:'defence'
+    },
+    {
+      class:'js2',
+      name:'farouq',
+      position:'defence'
+    },
+    {
+      class:'js2',
+      name:'Hassana',
+      position:'defence'
+    },
+    {
+      class:'js2',
+      name:'Hauwa',
+      position:'defence'
+    },
+    {
+      class:'js2',
+      name:'Hajara',
+      position:'defence'
+    },
+    {
+      class:'js2',
+      name:'Hussaina',
+      position:'defence'
+    }
+  ]
   return (
     <>
       <div className="w-full text-black mt-24">
@@ -22,17 +63,45 @@ export const SalesView = () => {
                 className=" h-[100%] w-[90%] outline-none bg-transparent py-3 px-3"
                 type="text"
                 placeholder="Search Genres/artists"
+                onChange={(e) => setSearchVal(e.target.value)}
               />
             </div>
           </div>
           {/** Cards Response Implemenrtation  */}
           <div className="mt-10 w-full mb-[190px] flex flex-wrap h-auto">
-            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-black"></div>
-            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-black"></div>
-            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-black"></div>
-            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-black"></div>
-            <div className="h-[460px] w-[400px] mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-black"></div>
-           
+            {
+              students && students.filter((student) => {
+                return searchVal.toLowerCase() == '' ?
+                student : student.name.toLowerCase().includes(searchVal)
+              }).map((student, index) => (
+                <>
+                <div className="h-[460px] w-[400px] py-2 px-2 mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-white/55">
+                {`${index}`}
+              <div className="w-[98%] ml-auto mr-auto rounded-2xl bg-white/55 h-[60%]">
+                <img src="./assets/headphone.png" className="w-[92%] ml-auto mr-auto h-[98%]" />
+              </div>
+              <div className="flex">
+              <div className="w-full flex  h-12 ">
+                <p>Artist Name:</p>
+                <p>{`${student.name}`}</p>
+              </div>
+              <div className="w-full flex  h-12 ">
+                <p>Price:</p>
+                <p>0.3eth</p>
+              </div>
+              </div>
+              <div className="w-full flex  h-12 ">
+                <p>Description:</p>
+                <p>Monster Paradise</p>
+              </div>
+              <div className="w-full flex">
+                <button className="w-32 h-12 bg-blue-400/65 rounded-full ml-auto mr-auto">Explore</button>
+              </div>
+            </div>
+                </>
+              ))
+            }
+            
           </div>
         </div>
       </div>

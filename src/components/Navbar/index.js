@@ -4,14 +4,17 @@ import { useCheckArtist } from "@/hooks/useCheckArtist";
 import { useAccount } from "wagmi";
 import Link from "next/link";
 import { CustomButton } from "../Buttons/CustomButton";
-import { UserPages, ArtistPages } from "./Pages";
+import { UserPages, ArtistPages, AdminPages } from "./Pages";
+import { useCheckAdmin } from "@/hooks/useCheckAdmin";
+import { GlobalContext } from "@/context/context";
 
 
 export const Navbar = () => {
-    
+    //const {isAdmin, isArtist} = GlobalContext()
     const [isModal, setIsModal] = useState(false)
     const { isConnected } = useAccount()
     const isArtist = useCheckArtist()
+    const isAdmin = useCheckAdmin()
     const handleClick = () => {
       setIsWalletModal(true);
       //alert('clicked')
@@ -86,13 +89,19 @@ export const Navbar = () => {
               </Link>
             </div>
             <div className="py-2 px-1">
-              {
+              <div className="flex">
+                <div>{
                 
                 isArtist ? 
                 <ArtistPages />
                 :
                 <UserPages />
-              }
+              }</div>
+              <div>
+              {isAdmin && <AdminPages />}
+              </div>
+              </div>
+              
               </div>
             <div className="mr-4 ml-auto px-2 py-0">
               <CustomButton />
