@@ -10,10 +10,11 @@ import { GlobalContext } from "@/context/context";
 
 
 export const Navbar = () => {
-    const {isAdmin, isArtist} = GlobalContext()
+    //const {isAdmin, isArtist} = GlobalContext()
     const [isModal, setIsModal] = useState(false)
     const { isConnected } = useAccount()
-    
+    const isArtist = useCheckArtist()
+    const isAdmin = useCheckAdmin()
     const handleClick = () => {
       setIsWalletModal(true);
       //alert('clicked')
