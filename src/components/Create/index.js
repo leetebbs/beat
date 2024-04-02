@@ -47,9 +47,9 @@ export const CreateView = () => {
     handleUploadMusicToIpfs();
     setTimeout(async () => {
       storeExampleNFT();
-      setTimeout(async () => {
-        mintNFTonFactory()
-      },25000);
+    //   setTimeout(async () => {
+    //     mintNFTonFactory()
+    //   },25000);
     }, 15000);
     // getExampleImage();
   };
@@ -98,11 +98,11 @@ export const CreateView = () => {
     };
 
     const metadata = await client.store(nft);
-
     console.log("NFT data stored!");
     console.log("Metadata URI: ", metadata.url);
     // setTokenURI(metadata.url);
     tokenURI = metadata.url;
+    mintNFTonFactory();
   }
 
   async function mintNFTonFactory() {
