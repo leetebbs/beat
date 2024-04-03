@@ -140,7 +140,7 @@ export const CreateView = () => {
       <h1>Create</h1>
       <div className="w-[95%] ml-auto mr-auto py-8 px-8 h-auto flex justify-evenly rounded">
         <div className="w-[50%] py-8 px-5 items-center rounded-3xl bg-white/25 ">
-        <form onSubmit={handleSubmit} className=" items-center">
+          <form onSubmit={handleSubmit} className=" items-center">
             <div className="flex">
             <div className=" ml-auto mr-auto w-[300px] mt-[4px] h-20">
             <div className="h-[50%] mt-auto mb-auto rounded-full bg-white/35 text-sm flex flex-row w-[95%] ml-auto mr-auto">
@@ -222,7 +222,7 @@ export const CreateView = () => {
             </div>
           </div>
           </div>
-          <div className=" ml-auto mr-auto w-[660px] mt-[4px] h-20">
+          <div className=" ml-auto mr-auto w-[95%] mt-[4px] h-20">
             <div className="h-[50%] mt-auto mb-auto py-0 px-2 rounded-full bg-white/35 text-sm flex flex-row w-[95%] ml-auto mr-auto">
               <select
               className="h-[100%] w-[100%] outline-none bg-transparent py-3 px-3"
@@ -238,7 +238,7 @@ export const CreateView = () => {
             </div>
           </div>
       
-            <div className="bg-black/35 w-[630px] py-1 ml-auto mr-auto flex rounded-3xl mt-1 text-white">
+            <div className="bg-black/35 w-[95%] py-1 ml-auto mr-auto flex rounded-3xl mt-1 text-white">
               <h1 className=" py-4 ml-auto mr-auto">Upload Cover</h1>
               <input
                 className="w-[50%] h-10 ml-auto mr-auto items-end rounded mt-3 font"
@@ -249,7 +249,7 @@ export const CreateView = () => {
                 onChange={handleImageChange}
               />
             </div>
-            <div className="bg-black/35 w-[630px] py-1 ml-auto mr-auto rounded-3xl mt-3 text-white">
+            <div className="bg-black/35 w-[95%] py-1 ml-auto mr-auto rounded-3xl mt-3 text-white">
               <div className="flex">
               <h1 className=" py-4 ml-auto mr-auto">Upload Track</h1>
               <input
@@ -276,21 +276,27 @@ export const CreateView = () => {
             </div>
           </form>
         </div>
-        <div>
+        <div className="w-[30%] flex flex-col rounded-2xl bg-white/35 py-8 px-8">
+          <div className="ml-auto bg-black/25 w-[220px] rounded-full h-[220px] mr-auto">
           {imageInput ? (
-            <Image src={imageInput} alt="Preview" width={200} height={200} />
+            <Image className="ml-auto mr-auto py-2  rounded-3xl" src={imageInput} alt="Preview" width={200} height={200} />
           ) : (
             <Image
+              className="ml-auto mr-auto py-2 rounded-3xl"
               src="/assets/placeholder.png"
               alt="Placeholder"
               width={200}
               height={200}
             />
           )}
-          {artistName && <p>Artist Name: {artistName}</p>}
-          {name && <p>Name: {name}</p>}
-          {description && <p>Description: {description}</p>}
-          {price && <p>Price: {price} ETH</p>}
+          </div>
+          <div className="mt-12 bg-white/35">
+          {artistName && <div className="flex py-2 px-2"> Artist Name: <p className="mr-2 ml-2">   {artistName}</p> </div>}
+          {name && <div className="flex"> Genre Name: <p>  {name}</p> </div>}
+          {description && <div className="flex"> Description: <p>{description}</p> </div>}
+          {price && <div className="flex"> Price: <p>{name}</p> ETH</div>}
+          </div>
+          
         </div>
       </div>
     </div>
