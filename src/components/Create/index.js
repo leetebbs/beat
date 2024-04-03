@@ -20,14 +20,14 @@ export const CreateView = () => {
   const [selectedGenre, setSelectedGenre] = useState("");
   const [numberOfCopies, setNumberOfCopies] = useState(0);
   const [nftSymbol, setNftSymbol] = useState("");
-  const [tokenURI, setTokenURI] = useState("");
+//   const [tokenURI, setTokenURI] = useState("");
   const [uploadedImageURL, setUploadedImageURL] = useState(null);
   const account = useAccount();
   const userAddress = account.address;
   let imageIpfsUrl;
   let musicUrl;
   let uriData;
-  let tokenUri;
+  let tokenURI;
   const handleFileChange = (e) => {
     const files = e.target.files;
     setFiles(files);
@@ -41,15 +41,15 @@ export const CreateView = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     e.preventDefault();
     handleUploadImageToIpfs();
     handleUploadMusicToIpfs();
     setTimeout(async () => {
       storeExampleNFT();
-      setTimeout(async () => {
-        mintNFTonFactory()
-      },15000);
+    //   setTimeout(async () => {
+    //     mintNFTonFactory()
+    //   },25000);
     }, 15000);
     // getExampleImage();
   };
@@ -98,15 +98,17 @@ export const CreateView = () => {
     };
 
     const metadata = await client.store(nft);
-
     console.log("NFT data stored!");
     console.log("Metadata URI: ", metadata.url);
-    setTokenURI(metadata.url);
+    // setTokenURI(metadata.url);
+    tokenURI = metadata.url;
+    mintNFTonFactory();
   }
 
   async function mintNFTonFactory() {
     try {
       if (window.ethereum) {
+        console.log(tokenURI)
         const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
         const factoryContract = new ethers.Contract(
@@ -265,7 +267,7 @@ export const CreateView = () => {
             </div>
             <div className="w-full mt-6 flex">
             <button
-              onClick={(e) => handleSubmit()}
+              onClick={() => handleSubmit()}
               className="bg-blue-500 ml-auto mr-auto hover:bg-blue-700 w-42 text-white font-bold py-2 px-4 rounded-2xl mt-3"
             >
               Create Now

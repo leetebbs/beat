@@ -13,6 +13,11 @@ export const UserPages = () => {
             url: "/",
             status: "",
           },
+          {
+            name: "Artist Registration",
+            url: "/register",
+            status: "",
+          }
     ]
     return(
     <>
