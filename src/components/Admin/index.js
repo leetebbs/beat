@@ -11,7 +11,7 @@ import {
 } from "@/config/data";
 import { useAccount } from "wagmi";
 export const AdminView = () => {
-  const {data:hash , writeContract } = useWriteContract()
+  const {data:hash , error:callerror, writeContract } = useWriteContract()
   const [verifyAddress, setVerifyAddress] = useState("");
   const [error, setError] = useState(""); // State to handle error messages
   const role =
@@ -40,19 +40,16 @@ export const AdminView = () => {
   }
 
   const setVerify = async () => {
-    try {
+    
       console.log('starting')
-      writeContract({
+      await writeContract({
         address: DBeatsFactoryAddress, 
-        DBeatsFactoryAbi, 
+        abi: DBeatsFactoryAbi, 
         functionName: 'grantRole', 
         args: [role,verifyAddress]
       })
       console.log('middle')
-    } catch (error) {
-      console.log(error);
-      alert('err',error)
-    }
+      console.log(callerror,hash)
   }
 
   async function mintArtistNFT() {
@@ -92,7 +89,7 @@ export const AdminView = () => {
             </div>
           </div>
     <div className="flex items-center gap-4 my-10">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white w-32 font-bold py-2 px-4 rounded-full " onClick={setVerified}>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white w-32 font-bold py-2 px-4 rounded-full " onClick={setVerify}>
         Verify
       </button>
       <button className="bg-blue-500 hover:bg-blue-700 w-32 text-white font-bold py-2 px-4 rounded-full" onClick={mintArtistNFT}>

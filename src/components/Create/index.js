@@ -137,7 +137,7 @@ export const CreateView = () => {
       <h1>Create</h1>
       <div className="w-[95%] ml-auto mr-auto py-8 px-8 h-auto flex justify-evenly rounded">
         <div className="w-[50%] py-8 px-5 items-center rounded-3xl bg-white/25 ">
-          <div className=" items-center">
+          <form onSubmit={handleSubmit()} className=" items-center">
             <div className="flex">
             <div className=" ml-auto mr-auto w-[300px] mt-[4px] h-20">
             <div className="h-[50%] mt-auto mb-auto rounded-full bg-white/35 text-sm flex flex-row w-[95%] ml-auto mr-auto">
@@ -265,13 +265,13 @@ export const CreateView = () => {
             </div>
             <div className="w-full mt-6 flex">
             <button
-              onClick={(e) => handleSubmit()}
+              type="submit"
               className="bg-blue-500 ml-auto mr-auto hover:bg-blue-700 w-42 text-white font-bold py-2 px-4 rounded-2xl mt-3"
             >
               Create Now
             </button>
             </div>
-          </div>
+          </form>
         </div>
         <div>
           {imageInput ? (
