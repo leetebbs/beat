@@ -41,8 +41,8 @@ export const CreateView = () => {
     }
   };
 
-  const handleSubmit = () => {
-    //e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     handleUploadImageToIpfs();
     handleUploadMusicToIpfs();
     setTimeout(async () => {
@@ -138,7 +138,7 @@ export const CreateView = () => {
     <div className="w-[100%] text-black mt-24 flex flex-col justify-center items-center">
       <h1>Create</h1>
       <div className="w-[95%] ml-auto mr-auto py-8 px-8 h-auto flex justify-evenly rounded">
-        <div className="w-[55%] py-8 px-5 items-center rounded-3xl bg-white/25 ">
+        <div className="w-[50%] py-8 px-5 items-center rounded-3xl bg-white/25 ">
           <form onSubmit={handleSubmit()} className=" items-center">
             <div className="flex">
             <div className=" ml-auto mr-auto w-[300px] mt-[4px] h-20">
