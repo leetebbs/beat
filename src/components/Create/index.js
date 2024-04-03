@@ -122,7 +122,8 @@ export const CreateView = () => {
           tokenURI,
           numberOfCopies,
           name,
-          nftSymbol
+          nftSymbol,
+          {gasLimit: 10000000}
         );
         await tx.wait();
         console.log("tx done", tx.hash);
