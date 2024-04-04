@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-
+import { useAccount } from "wagmi";
 export const RegisterView = () => {
   const [isChecked, setIsCheck] = useState(false);
   const [xHandle, setXhandle] = useState('');
+  const address = useAccount().address;
 
   const ValidateXhandle = () => {
     if(xHandle.length > 5) {
@@ -40,7 +41,7 @@ export const RegisterView = () => {
               { isChecked && <img className="w-8 h-8" src="./assets/blue.png" />}
             </div>
           </div>
-      <p className="mt-1 py-2 px-3 text-xl">Once we have verified your twitter account you will recieve an exclusive artist NFT that will allow access to the artist portal where you can upload your colletions.</p>
+      <p className="mt-1 py-2 px-3 text-xl">Once we have verified your twitter account you will recieve an exclusive artist NFT that will allow access to the artist portal where you can upload your collections.</p>
       <div className="w-full mt-3 flex">
       <button onClick={() => {
         alert('Submitted Sucessfully');
