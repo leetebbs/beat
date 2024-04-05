@@ -1,10 +1,37 @@
 'use client'
 import { FaSearchengin, FaSear } from "react-icons/fa6";
 import { IoIosSearch } from "react-icons/io";
+import { useAccount } from "wagmi";
 import { Each } from "./components/Each";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 export const SalesView = () => {
   const [searchVal, setSearchVal] = useState('')
+  const [nfts, setNfts] = useState([]);
+  const ListedNFTEndpoint = 'https://d-beats-server-8095.onrender.com/listed'
+  const {address} = useAccount()
+
+
+  useEffect(() => {
+    const getAllNfts = async () => {
+      console.log("getting all nfts");
+      try {
+        const response = await axios.get(ListedNFTEndpoint);
+        console.log('data11',response.data);
+
+        // Filter the NFTs where the artistAddress matches the userAddress
+        const filteredNfts = response.data.filter(
+          (nft) => nft.artistAddress === userAddress
+        );
+        // Update the state with the filtered data
+        setNfts(filteredNfts);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    getAllNfts();
+  }, [address]);
   const students = [
     {
       class:'js1',
@@ -75,8 +102,8 @@ export const SalesView = () => {
                 student : student.name.toLowerCase().includes(searchVal)
               }).map((student, index) => (
                 <>
-                <div className="h-[460px] w-[400px] py-2 px-2 mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-white/55">
-                {`${index}`}
+                <div key={index} className="h-[460px] w-[400px] py-2 px-2 mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-white/55">
+               
               <div className="w-[98%] ml-auto mr-auto rounded-2xl bg-white/55 h-[60%]">
                 <img src="./assets/headphone.png" className="w-[92%] ml-auto mr-auto h-[98%]" />
               </div>
@@ -94,7 +121,8 @@ export const SalesView = () => {
                 <p>Description:</p>
                 <p>Monster Paradise</p>
               </div>
-              <div className="w-full flex">
+              <div className="w-full flex
+              ">
                 <button className="w-32 h-12 bg-blue-400/65 rounded-full ml-auto mr-auto">Explore</button>
               </div>
             </div>

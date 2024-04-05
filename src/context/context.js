@@ -8,6 +8,7 @@ export const BeatContextProvider = ({children}) => {
     const [address, setAddress] = useState('');
     const [isArtist,setIsArtist] = useState(false)
     const [isAdmin,setIsAdmin] = useState(false)
+    const [nftLength,setNftLenght] = useState(0)
     
     const value = {
         address,
@@ -15,7 +16,9 @@ export const BeatContextProvider = ({children}) => {
         isArtist,
         setIsArtist,
         isAdmin,
-        setIsAdmin
+        setIsAdmin,
+        nftLength,
+        setNftLenght
     }
     return(
     <beatContext.Provider value={value}>

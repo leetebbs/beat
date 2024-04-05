@@ -62,8 +62,8 @@ export const Navbar = () => {
             <div className="ml-0 mr-auto mt-auto mb-auto">
               <Link href={"/"}>
                 <div className="text-xl font-semibold flex">
-                 {/**<img className="w-[52px] h-[52px]" src="./assets/body.png" />**/}
-                 <p className="text-black/55 text-2xl flex font-bold ml-1"><img src='./assets/headphone.png' className="w-10 mr-2 h-10" /><span className="">Beat</span></p>
+                 {/**<img className="w-[52px] h-[52px]" src="./assets/U1.png" />**/}
+                 <p className="text-black/55 text-2xl flex font-bold ml-1"><img src='./assets/U1.png' className="w-10 mr-2 h-10" /><span className="">Beat</span></p>
                 </div>
               </Link>
             </div>

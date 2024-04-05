@@ -5,6 +5,7 @@ import { DBeatsFactoryAddress, DBeatsFactoryAbi } from "@/config/data";
 import { ethers } from "ethers";
 import { useAccount } from "wagmi";
 import { NFTStorage, File } from "nft.storage";
+import { LoadingSuspense } from "../suspense/Loading";
 
 export const CreateView = () => {
   const client = new NFTStorage({
@@ -307,6 +308,7 @@ export const CreateView = () => {
           
         </div>
       </div>
+      {isLoading && <LoadingSuspense/>}
     </div>
   );
 };
