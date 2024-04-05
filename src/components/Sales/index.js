@@ -1,14 +1,15 @@
 'use client'
 import { FaSearchengin, FaSear } from "react-icons/fa6";
-import { IoIosSearch } from "react-icons/io";
+import { IoIosSearch, IoMdPlay } from "react-icons/io";
 import { useAccount } from "wagmi";
 import { Each } from "./components/Each";
 import axios from "axios";
 import { useState, useEffect } from "react";
 export const SalesView = () => {
+  const [audio,setAudio] = useState(false)
   const [searchVal, setSearchVal] = useState('')
   const [nfts, setNfts] = useState([]);
-  const ListedNFTEndpoint = 'https://d-beats-server-8095.onrender.com/listed'
+  const ListedNFTEndpoint = 'https://d-beats-server-8095.onrender.com/allNfts'
   const {address} = useAccount()
 
 
@@ -21,10 +22,10 @@ export const SalesView = () => {
 
         // Filter the NFTs where the artistAddress matches the userAddress
         const filteredNfts = response.data.filter(
-          (nft) => nft.artistAddress === userAddress
+          (nft) => nft.artistAddress === address
         );
         // Update the state with the filtered data
-        setNfts(filteredNfts);
+        setNfts(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -72,7 +73,7 @@ export const SalesView = () => {
   return (
     <>
       <div className="w-full text-black mt-24">
-        <div className="w-[85%] ml-auto mr-auto py-12 h-[190px]">
+        <div className="w-[90%] ml-auto mr-auto py-12 h-[190px]">
           <div className="py-2 px-28">
             <p className="text-6xl text-start font-light">Sales</p>
             <p className="mt-5 text-lg text-start  font-mono">
@@ -97,37 +98,64 @@ export const SalesView = () => {
           {/** Cards Response Implemenrtation  */}
           <div className="mt-10 w-full mb-[190px] flex flex-wrap h-auto">
             {
-              students && students.filter((student) => {
+              nfts && nfts.filter((student) => {
                 return searchVal.toLowerCase() == '' ?
                 student : student.name.toLowerCase().includes(searchVal)
               }).map((student, index) => (
                 <>
-                <div key={index} className="h-[460px] w-[400px] py-2 px-2 mt-5 mb-5 ml-auto mr-auto rounded-2xl bg-white/55">
+            <div
+              key={index}
+              className="h-[500px] ml-8 mr-8  w-[400px] py-2 px-2 mt-5 mb-5  rounded-2xl bg-black/25"
+            >
+              <div className="w-[95%] ml-auto mr-auto rounded-2xl bg-white/55 h-[60%]">
+                <img
+                  src="./assets/headphone.png"
+                  className="w-[90%] ml-auto mr-auto h-[98%]"
+                />
+              </div>
+              <div className="flex w-[95%]">
+                <div className="w-full py-2 px-3 flex">
+                  <div>{`Name:  ${student.name}`}</div>
+                </div>
+                <div className="w-full py-2 px-2 flex">
+                  <div>{`Price:  ${student.price}`}</div>
+                </div>
+              </div>
+              <div className="w-full mt-2 mb-2 flex">
+                <button className="h-8 w-[130px] rounded-2xl bg-blue-600/85 ml-auto mr-4">Buy</button>
+                
+              </div>
+              <div
+                className="w-full flex
+              "
+              >
+                {
+                  audio &&
+                  <audio
+                  className="w-[90%] ml-auto mr-auto mt-5 mb-2"
+                  controls
+                  autoplay
+                >
+                  <source src="horse.ogg" type="audio/ogg" />
+                  <source src="horse.mp3" type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+                }
+                {
+                  !audio && 
+                  <div className="ml-5 py-5">
+                    <div onClick={() => {
+                      setAudio(true)
+                    }} className="bg-blue-400 h-12 w-12 rounded-full py-3 px-4">
+                    <IoMdPlay className="text-white mt-0.5 text-xl"/>
+                  </div>
+                  </div>
+                  
+                }
                
-              <div className="w-[98%] ml-auto mr-auto rounded-2xl bg-white/55 h-[60%]">
-                <img src="./assets/headphone.png" className="w-[92%] ml-auto mr-auto h-[98%]" />
-              </div>
-              <div className="flex">
-              <div className="w-full flex  h-12 ">
-                <p>Artist Name:</p>
-                <p>{`${student.name}`}</p>
-              </div>
-              <div className="w-full flex  h-12 ">
-                <p>Price:</p>
-                <p>0.3eth</p>
-              </div>
-              </div>
-              <div className="w-full flex  h-12 ">
-                <p>Description:</p>
-                <p>Monster Paradise</p>
-              </div>
-              <div className="w-full flex
-              ">
-                <button className="w-32 h-12 bg-blue-400/65 rounded-full ml-auto mr-auto">Explore</button>
               </div>
             </div>
-                </>
-              ))
+          </>              ))
             }
             
           </div>

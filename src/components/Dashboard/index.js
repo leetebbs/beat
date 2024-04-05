@@ -43,7 +43,7 @@ export const DashboardView = () => {
           <>
             <div
               key={index}
-              className="h-[460px] ml-8 mr-8  w-[400px] py-2 px-2 mt-5 mb-5  rounded-2xl bg-black/25"
+              className="h-[500px] ml-8 mr-8  w-[400px] py-2 px-2 mt-5 mb-5  rounded-2xl bg-black/25"
             >
               <div className="w-[95%] ml-auto mr-auto rounded-2xl bg-white/55 h-[60%]">
                 <img
@@ -56,10 +56,10 @@ export const DashboardView = () => {
                   <div>{`Name:  ${student.name}`}</div>
                 </div>
                 <div className="w-full py-2 px-2 flex">
-                  <div>{`Price:  ${student.price} ETH`}</div>
+                  <div>{`Price:  ${student.price}`}</div>
                 </div>
               </div>
-              <div className="w-full mt-3 mb-2 flex">
+              <div className="w-full mt-2 mb-2 flex">
                 <button className="h-8 w-[130px] rounded-2xl bg-blue-600/85 ml-auto mr-4">List</button>
                 
               </div>
