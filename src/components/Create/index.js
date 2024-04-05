@@ -20,6 +20,7 @@ export const CreateView = () => {
   const [selectedGenre, setSelectedGenre] = useState("");
   const [numberOfCopies, setNumberOfCopies] = useState(0);
   const [nftSymbol, setNftSymbol] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 //   const [tokenURI, setTokenURI] = useState("");
   const [uploadedImageURL, setUploadedImageURL] = useState(null);
   const account = useAccount();
@@ -44,6 +45,7 @@ export const CreateView = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
+    setIsLoading(true);
     handleUploadImageToIpfs();
     handleUploadMusicToIpfs();
     setTimeout(async () => {
@@ -106,6 +108,7 @@ export const CreateView = () => {
     console.log("Metadata URI: ", metadata.url);
     // setTokenURI(metadata.url);
     tokenURI = metadata.url;
+    setIsLoading(false);
     mintNFTonFactory();
   }
 
@@ -139,6 +142,7 @@ export const CreateView = () => {
     }
   }
 
+  // add a loading spinner to the page while isLoading is true **********************************************************
   return (
     <div className="w-[100%] text-black mt-24 flex flex-col justify-center items-center">
       <h1 className="font-bold mt-4 mb-5 text-2xl">Create</h1>
